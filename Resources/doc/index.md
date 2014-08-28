@@ -48,6 +48,14 @@ public function registerBundles()
 }
 ```
 
+``` yml
+// app/config/routing.yml
+f_devs_geo:
+    resource: "@FDevsGeoBundle/Resources/config/routing.xml"
+    prefix:   /{_locale}
+```
+
+
 ### Step 3: Use the bundle
 
 add field in your model
