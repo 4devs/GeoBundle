@@ -1,0 +1,48 @@
+{% block fdevs_geo_point_widget %}
+    <div class="form-inline fdevs_geo" id="{{ id }}" {{ block('widget_container_attributes') }}>
+        {% set label_attr = {} %}
+        <div class="form-group">
+            {{ form_label(form.coordinates.lat) }}
+            {{ form_widget(form.coordinates.lat) }}
+            {{ form_errors(form.coordinates.lat) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.coordinates.lng) }}
+            {{ form_widget(form.coordinates.lng) }}
+            {{ form_errors(form.coordinates.lng) }}
+        </div>
+
+        <div class="btn-group">
+            <button data-path="{{ path('f_devs_geo_map',{'id': id,'lat':form.coordinates.lat.vars.value|default(default_coordinates.lat),'lng':form.coordinates.lng.vars.value|default(default_coordinates.lng)}) }}"
+                    class="btn btn-default select" type="button">{{ 'form.select'|trans({},'FDevsGeoBundle') }}</button>
+            <button class="btn btn-default clear" type="button">{{ 'form.clear'|trans({},'FDevsGeoBundle') }}</button>
+            <button class="btn btn-default reset" type="button">{{ 'form.reset'|trans({},'FDevsGeoBundle') }}</button>
+        </div>
+    </div>
+    {% spaceless %}
+        <script>
+            $(function () {
+                $('.fdevs_geo .select').on('click', function (e) {
+                    e.preventDefault();
+                    window.open($(this).data('path'), "map", "width=500,height=400,left=80,top=80")
+                });
+                $('.fdevs_geo .clear').on('click', function (e) {
+                    e.preventDefault();
+                    $(this).parents('.fdevs_geo').find('input').each(function (indevs, value) {
+                        $(this).val('');
+                    });
+                });
+                $('.fdevs_geo .reset').on('click', function (e) {
+                    e.preventDefault();
+                    $(this).parents('.fdevs_geo').find('input').each(function (indevs, value) {
+                        $(this).reset();
+                    });
+                });
+            });
+            window.setGeoInputValue = function (id, lat, lng) {
+                document.getElementById(id + '_coordinates_lng').value = lng;
+                document.getElementById(id + '_coordinates_lat').value = lat;
+            }
+        </script>
+    {% endspaceless %}
+{% endblock %}

@@ -1,0 +1,34 @@
+{
+    "name": "fdevs/geo-bundle",
+    "type": "symfony-bundle",
+    "description": "4devs GeoBundle",
+    "keywords": ["Geo"],
+    "homepage": "https://github.com/4devs/GeoBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrey Samusev",
+            "email": "andrey_simfi@list.ru",
+            "homepage":"http://andrey.4devs.io"
+        },
+        {
+            "name": "4devs Community",
+            "homepage": "https://github.com/4devs/GeoBundle/contributors"
+        }
+
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4",
+        "symfony/framework-bundle": "~2.5",
+        "twig/extensions": "~1.0",
+        "symfony/form": "~2.5",
+        "jmikola/geojson": "~1.0"
+    },
+    "require-dev": {},
+    "suggest": {},
+    "autoload": {
+        "psr-0": { "FDevs\\GeoBundle": "" }
+    },
+    "target-dir": "FDevs/GeoBundle"
+}

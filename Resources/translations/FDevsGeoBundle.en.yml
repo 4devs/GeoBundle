@@ -1,0 +1,6 @@
+form:
+    select: 'Select'
+    clear: 'Clear'
+    reset: 'Reset'
+    lat: 'Latitude'
+    lng: 'Longitude'
