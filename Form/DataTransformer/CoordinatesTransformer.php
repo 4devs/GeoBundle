@@ -23,6 +23,6 @@ class CoordinatesTransformer implements DataTransformerInterface
      */
     public function reverseTransform($value)
     {
-        return is_array($value) ? array_values($value) : null;
+        return is_array($value) ? array_map(function($val){return $val + 0;},array_values($value)) : null;
     }
 }
