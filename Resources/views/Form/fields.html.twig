@@ -16,7 +16,6 @@
             <button data-path="{{ path('f_devs_geo_map',{'id': id,'lat':form.coordinates.lat.vars.value|default(default_coordinates.lat),'lng':form.coordinates.lng.vars.value|default(default_coordinates.lng)}) }}"
                     class="btn btn-default select" type="button">{{ 'form.select'|trans({},'FDevsGeoBundle') }}</button>
             <button class="btn btn-default clear" type="button">{{ 'form.clear'|trans({},'FDevsGeoBundle') }}</button>
-            <button class="btn btn-default reset" type="button">{{ 'form.reset'|trans({},'FDevsGeoBundle') }}</button>
         </div>
     </div>
     {% spaceless %}
@@ -30,12 +29,6 @@
                     e.preventDefault();
                     $(this).parents('.fdevs_geo').find('input').each(function (indevs, value) {
                         $(this).val('');
-                    });
-                });
-                $('.fdevs_geo .reset').on('click', function (e) {
-                    e.preventDefault();
-                    $(this).parents('.fdevs_geo').find('input').each(function (indevs, value) {
-                        $(this).reset();
                     });
                 });
             });

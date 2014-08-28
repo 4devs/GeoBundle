@@ -4,17 +4,13 @@ namespace FDevs\GeoBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
 
-class CoordinatesTransformer implements DataTransformerInterface
+class PointTransformer implements DataTransformerInterface
 {
     /**
      * @inheritDoc
      */
     public function transform($value)
     {
-        if (is_array($value)) {
-            $value = ['lat' => $value[0], 'lng' => $value[1]];
-        }
-
         return $value;
     }
 
@@ -23,6 +19,10 @@ class CoordinatesTransformer implements DataTransformerInterface
      */
     public function reverseTransform($value)
     {
-        return is_array($value) ? array_values($value) : null;
+        if (!array_filter($value->getCoordinates())) {
+            $value = null;
+        }
+
+        return $value;
     }
 }

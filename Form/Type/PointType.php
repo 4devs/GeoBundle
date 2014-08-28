@@ -1,6 +1,7 @@
 <?php
 namespace FDevs\GeoBundle\Form\Type;
 
+use FDevs\GeoBundle\Form\DataTransformer\PointTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
@@ -17,7 +18,8 @@ class PointType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('coordinates', new CoordinatesType(), ['required' => $options['required']]);
+        $builder->add('coordinates', new CoordinatesType(), ['required' => $options['required']])
+            ->addModelTransformer(new PointTransformer());;
     }
 
     /**
