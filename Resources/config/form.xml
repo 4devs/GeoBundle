@@ -5,13 +5,18 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="f_devs_geo.form_type_point.class">FDevs\GeoBundle\Form\Type\PointType</parameter>
+        <parameter key="f_devs_geo.form_type_point.class">FDevs\Geo\Form\Type\PointType</parameter>
+        <parameter key="f_devs_geo.form_type_coordinates.class">FDevs\Geo\Form\Type\CoordinatesType</parameter>
     </parameters>
 
     <services>
         <service id="f_devs_geo.form_type_point" class="%f_devs_geo.form_type_point.class%">
-            <tag name="form.type" alias="fdevs_geo_point"/>
+            <tag name="form.type" alias="geo_point"/>
             <call method="setDefaultCoordinates"><argument>%f_devs_geo.default_coordinates%</argument></call>
+        </service>
+
+        <service id="f_devs_geo.form_type_coordinates" class="%f_devs_geo.form_type_coordinates.class%">
+            <tag name="form.type" alias="coordinates"/>
         </service>
     </services>
 </container>
