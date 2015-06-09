@@ -24,7 +24,9 @@ class FDevsGeoBundle extends Bundle
      */
     private function addRegisterMappingsPass(ContainerBuilder $container)
     {
-        $mappings = [realpath(__DIR__ . '/Resources/config/doctrine/model') => 'FDevs\GeoBundle\Model'];
+        $refl = new \ReflectionClass('FDevs\Geo\Model\Point');
+
+        $mappings = [realpath(dirname(dirname($refl->getFileName())).'/Resources/config/doctrine/model') => 'FDevs\Geo\Model'];
 
         if (class_exists('Doctrine\Bundle\MongoDBBundle\DependencyInjection\Compiler\DoctrineMongoDBMappingsPass')) {
             $container->addCompilerPass(

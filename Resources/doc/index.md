@@ -1,5 +1,5 @@
 Getting Started With GeoBundle
-===========================================
+==============================
 
 ## Installation and usage
 
@@ -63,7 +63,7 @@ add field in your model
 ``` xml
 <document name="Acme\DemoBundle\Model\Document">
     <!--...-->
-    <embed-one target-document="FDevs\GeoBundle\Model\Point" field="point"/>
+    <embed-one target-document="FDevs\Geo\Model\Point" field="point"/>
     <indexes>
         <index>
             <key name="point" order="2dsphere"/>
@@ -80,7 +80,7 @@ class DemoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('point', 'fdevs_geo_point');
+        $builder->add('point', 'geo_point');
     }
 }
 ```
